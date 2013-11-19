@@ -15,4 +15,9 @@ describe Gadget do
       end
     end
   end
+  context ".images" do
+    it "method is present" do
+      expect(Gadget.method_defined? :images).to be_true
+    end
+  end
 end
