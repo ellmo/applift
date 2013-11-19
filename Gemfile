@@ -7,11 +7,13 @@ gem "paperclip", "~> 3.0"
 gem 'devise'
 gem 'haml-rails'
 gem 'jquery-rails'
+gem 'simple_form'
 
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'sass-rails',   '~> 3.2.3'
   gem 'uglifier', '>= 1.0.3'
+  gem "zurb-foundation", "~> 4.3.2"
 end
 
 group :development, :test do
