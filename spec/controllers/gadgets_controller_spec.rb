@@ -42,4 +42,52 @@ describe GadgetsController do
       expect(response).to render_template :new
     end
   end
+
+  context 'POST create' do
+    let(:attributes) {{name: 'ipod'}}
+    before { post :create, gadget: attributes }
+    it 'is creates gadget' do
+      expect(gadget.reload.new_record?).not_to be_true
+    end
+    it 'renders show' do
+      expect(response).to render_template :show
+    end
+  end
+
+  context 'GET edit' do
+    let(:gadget) { FactoryGirl.create :gadget }
+    before { get :edit, id: gadget.id }
+    it 'is success' do
+      expect(response).to be_success
+    end
+    it 'assigns properly' do
+      expect(assigns :gadget).to eq gadget
+    end
+    it 'renders edit' do
+      expect(response).to render_template :edit
+    end
+  end
+
+  context 'POST update' do
+    let(:gadget) { FactoryGirl.create :gadget }
+    let(:attributes) {{name: 'ipod'}}
+    before { post :update, id: gadget.id, gadget: attributes }
+    it 'is updates gadget' do
+      expect(gadget.reload.name).to eq attributes[:name]
+    end
+    it 'renders show' do
+      expect(response).to render_template :show
+    end
+  end
+
+  context 'POST destroy' do
+    let(:gadget) { FactoryGirl.create :gadget }
+    before { post :destroy, id: gadget.id }
+    it 'is destroys gadget' do
+      expect(Gadget.count).to eq 0
+    end
+    it 'renders index' do
+      expect(response).to render_template :index
+    end
+  end
 end
