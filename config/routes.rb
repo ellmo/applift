@@ -1,5 +1,5 @@
 Applift::Application.routes.draw do
-  root to: 'home#index'
+  root to: 'gadgets#index'
 
-  get 'home/index', to: 'home#index'
+  resources :gadgets
 end
