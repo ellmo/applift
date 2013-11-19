@@ -1,13 +1,15 @@
 class GadgetsController < ApplicationController
 
   before_filter :get_gadgets, only: [:index]
-  before_filter :get_gadget, only: [:show, :new, :edit]
+  before_filter :get_gadget, only: [:show, :edit]
 
   def index; end
 
   def show; end
 
-  def new ;end
+  def new
+    @gadget = Gadget.new
+  end
 
   def create
   end
