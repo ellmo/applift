@@ -3,13 +3,8 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.13'
 gem 'sqlite3'
 
-gem 'backbone-on-rails'
 gem 'haml-rails'
-gem 'haml_coffee_assets'
 gem 'jquery-rails'
-gem 'jquery-ui-rails'
-gem 'rabl'
-
 
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'
