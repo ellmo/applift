@@ -1,18 +1,18 @@
 class GadgetsController < ApplicationController
-  def index
-  end
 
-  def show
-  end
+  before_filter :get_gadgets, only: [:index]
+  before_filter :get_gadget, only: [:show, :new, :edit]
 
-  def new
-  end
+  def index; end
+
+  def show; end
+
+  def new ;end
 
   def create
   end
 
-  def edit
-  end
+  def edit ;end
 
   def update
   end
@@ -21,5 +21,14 @@ class GadgetsController < ApplicationController
   end
 
   def search
+  end
+
+private
+  def get_gadgets
+    @gadgets = Gadget.all
+  end
+
+  def get_gadget
+    @gadget = Gadget.find params[:id]
   end
 end
