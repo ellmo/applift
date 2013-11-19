@@ -4,7 +4,7 @@ module ApplicationHelper
     if user
       str = <<-HTML
       <div>
-        <span>#{user.login} |<span>
+        <span>#{user.email} |<span>
         <span>#{link_to("Log out", destroy_user_session_path, :method => :delete)}</span>
       </div>
       HTML
