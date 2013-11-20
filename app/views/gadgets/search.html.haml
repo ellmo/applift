@@ -1,0 +1,6 @@
+%h1 Found gadgets
+
+- @gadgets.each do |g|
+  .name= g.name
+  - if g.images.present?
+    .image= image_tag g.images.first.image_file_path

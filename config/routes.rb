@@ -3,5 +3,7 @@ Applift::Application.routes.draw do
 
   root to: 'gadgets#index'
 
-  resources :gadgets
+  resources :gadgets do
+    get :search, on: :collection
+  end
 end
