@@ -92,4 +92,16 @@ describe GadgetsController do
       expect(response).to redirect_to gadgets_path
     end
   end
+
+  context 'GET search' do
+    let(:gadget) { Gadget.last }
+    let(:search_string) { gadget.name }
+    before { get :search, search: search_string }
+    it 'finds gadget' do
+      expect(assigns :gadgets).to include gadget
+    end
+    it 'renders search' do
+      expect(response).to render_template :search
+    end
+  end
 end
