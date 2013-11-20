@@ -39,6 +39,7 @@ class GadgetsController < ApplicationController
   end
 
   def search
+    @gadgets = Gadget.where('name LIKE ?', "%#{params[:search]}%")
   end
 
 private
