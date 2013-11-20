@@ -1,7 +1,7 @@
 class GadgetsController < ApplicationController
 
   before_filter :get_gadgets, only: [:index]
-  before_filter :get_gadget, only: [:show, :edit, :update]
+  before_filter :get_gadget, only: [:show, :edit, :update, :destroy]
 
   def index; end
 
@@ -31,6 +31,11 @@ class GadgetsController < ApplicationController
   end
 
   def destroy
+    if @gadget.destroy
+      redirect_to @gadget
+    else
+      render action: :index, notice: 'error'
+    end
   end
 
   def search

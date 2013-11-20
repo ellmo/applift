@@ -44,13 +44,15 @@ describe GadgetsController do
   end
 
   context 'POST create' do
-    let(:attributes) {{name: 'ipod'}}
+    let(:user) { FactoryGirl.create :user }
+    let(:attributes) {{ name: 'ipod', user_id: user.id }}
+    let(:gadget) { Gadget.last }
     before { post :create, gadget: attributes }
     it 'is creates gadget' do
-      expect(gadget.reload.new_record?).not_to be_true
+      expect(gadget.new_record?).not_to be_true
     end
     it 'renders show' do
-      expect(response).to render_template :show
+      expect(response).to redirect_to gadget_path(gadget)
     end
   end
 
@@ -76,7 +78,7 @@ describe GadgetsController do
       expect(gadget.reload.name).to eq attributes[:name]
     end
     it 'renders show' do
-      expect(response).to render_template :show
+      expect(response).to redirect_to gadget_path(gadget)
     end
   end
 
@@ -84,10 +86,10 @@ describe GadgetsController do
     let(:gadget) { FactoryGirl.create :gadget }
     before { post :destroy, id: gadget.id }
     it 'is destroys gadget' do
-      expect(Gadget.count).to eq 0
+      expect(Gadget.count).to eq 3
     end
-    it 'renders index' do
-      expect(response).to render_template :index
+    it 'renders show' do
+      expect(response).to redirect_to gadgets_path
     end
   end
 end

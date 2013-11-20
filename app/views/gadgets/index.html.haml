@@ -2,4 +2,5 @@
 
 - @gadgets.each do |g|
   .name= g.name
-  .image= image_tag g.image_file
+  - if g.images.present?
+    .image= image_tag g.images.first.image_file_path
